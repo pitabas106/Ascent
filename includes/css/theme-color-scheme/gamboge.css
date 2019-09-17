@@ -110,6 +110,63 @@ table thead th:last-child {
 #home-slider .owl-dots .owl-dot:hover span {
   background: #F09A12;
 }
+
+
+
+/* WooCommerce Style */
+.woocommerce-message {
+    border-top-color: #F09A12;
+}
+.woocommerce-message::before {
+    color: #F09A12;
+}
+.woocommerce div.product p.price, 
+.woocommerce div.product span.price {
+    color: #F09A12;
+}
+.woocommerce div.product .stock {
+    color: #F09A12;
+}
+.woocommerce span.onsale {
+    background-color: #F09A12;
+}
+.woocommerce ul.products li.product .price {
+    color: #F09A12;
+}
+ #add_payment_method .cart-collaterals .cart_totals .discount td,
+.woocommerce-cart .cart-collaterals .cart_totals .discount td,
+.woocommerce-checkout .cart-collaterals .cart_totals .discount td {
+    color: #F09A12
+}
+
+.woocommerce div.product form.cart .button {
+    padding: 10px 30px;
+    line-height: 1.42857143;
+}
+.woocommerce #respond input#submit, 
+.woocommerce a.button, 
+.woocommerce button.button, 
+.woocommerce input.button,
+.woocommerce #respond input#submit.alt, 
+.woocommerce a.button.alt, 
+.woocommerce button.button.alt, 
+.woocommerce input.button.alt {
+    background-color: #F09A12;
+    color: #FFF;
+    font-weight: normal;
+}
+.woocommerce #respond input#submit:hover, 
+.woocommerce a.button:hover, 
+.woocommerce button.button:hover, 
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit.alt:hover, 
+.woocommerce a.button.alt:hover, 
+.woocommerce button.button.alt:hover, 
+.woocommerce input.button.alt:hover {
+    background-color: #d08309;
+    color: #FFF;
+}
+
 /* Responsive style */
 @media (max-width: 991px) and (min-width: 0px){
     .post-meta-info .entry-meta .comments_count,

@@ -4,14 +4,20 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package ascent
+ * @package Ascent
+ * @since   0.0.1
  */
 ?>
 
 <section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="entry-title"><?php _e( 'Nothing Found', 'ascent' ); ?></h1>
-	</header><!-- .page-header -->
+	
+	<?php ascent_entry_header_before(); ?>
+
+		<header class="page-header">
+			<h1 class="entry-title" itemprop="headline"><?php esc_html_e( 'Nothing Found', 'ascent' ); ?></h1>
+		</header><!-- .page-header -->
+
+	<?php ascent_entry_header_after(); ?>
 
 	<div class="page-content">
 		<?php if ( is_home() && current_user_can( 'publish_posts' ) ) : ?>
@@ -20,12 +26,12 @@
 
 		<?php elseif ( is_search() ) : ?>
 
-			<p><?php _e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'ascent' ); ?></p>
+			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'ascent' ); ?></p>
 			<?php get_search_form(); ?>
 
 		<?php else : ?>
 
-			<p><?php _e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'ascent' ); ?></p>
+			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'ascent' ); ?></p>
 			<?php get_search_form(); ?>
 
 		<?php endif; ?>

@@ -1,0 +1,57 @@
+.about-wrap {
+    position: relative;
+    margin: 25px 25px 0 20px;
+    max-width: 1640px;
+    font-size: 15px;
+}
+
+.asc-info-wrap .asc-section .dashicons {
+	margin-top: -4px;
+	vertical-align: middle;
+}
+
+.asc-info-wrap .nav-tab {
+	font-size: 16px;
+}
+
+.asc-info-wrap h1 {
+	font-size: 2em;
+}
+
+.asc-info-wrap h3 {
+	font-size: 1.2em;
+}
+
+.asc-info-wrap .asc-section-useful-plugins,
+.asc-info-wrap .asc-section-upgrade-to-pro,
+.asc-info-wrap .asc-section-demo-content {
+	margin-top: 50px;
+}
+
+.asc-info-wrap .tab-upgrade-to-pro {
+	background-color: #34bc99;
+	color: #FFF;
+}
+
+.asc-info-wrap .wp-badge {
+	background-image: url('../images/theme-logo.png');
+	background-color: #FFF;
+	background-size: 110px auto;
+	background-position: center;
+	height: 70px;
+}
+
+.asc-info-wrap .quick-links a {
+	margin-right: 5px;
+}
+
+.asc-info-notice .button-ascent-pro,
+.asc-info-notice .btn-dismiss {
+	margin-left: 7px;
+}
+
+.asc-info-wrap .plugin-list {
+	list-style-position: inside;
+	list-style-type: disc;
+}
+

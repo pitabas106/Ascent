@@ -13,7 +13,7 @@
 	} );
 	wp.customize( 'blogdescription', function( value ) {
 		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
+			// $( '.site-description' ).text( to );
 		} );
 	} );
 	// Header text color.
@@ -33,4 +33,5 @@
 			}
 		} );
 	} );
+
 } )( jQuery );

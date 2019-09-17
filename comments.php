@@ -7,7 +7,8 @@
  * handled by a callback to ascent_comment() which is
  * located in the includes/template-tags.php file.
  *
- * @package ascent
+ * @package Ascent
+ * @since 1.0.0 
  */
 
 /*
@@ -19,6 +20,8 @@ if ( post_password_required() )
     return;
 ?>
 
+<?php ascent_comments_before(); ?>
+
 <div id="comments" class="comments-area">
 
     <?php // You can start editing here -- including this comment! ?>
@@ -26,16 +29,33 @@ if ( post_password_required() )
     <?php if ( have_comments() ) : ?>
 	<header class="page-header">
 	    <h2 class="comments-title">
-		<?php
-		    printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'ascent' ),
-		    number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
-		?>
+        <?php
+  				$comments_number = get_comments_number();
+  				if ( '1' === $comments_number ) {
+  					/* translators: %s: post title */
+  					printf( _x( 'One thought on &ldquo;%s&rdquo;', 'comments title', 'ascent' ),
+             '<span>' . get_the_title() . '</span>' );
+  				} else {
+  					printf(
+  						/* translators: 1: number of comments, 2: post title */
+  						_nx(
+  							'%1$s thought on &ldquo;%2$s&rdquo;',
+  							'%1$s thoughts on &ldquo;%2$s&rdquo;',
+  							$comments_number,
+  							'comments title',
+  							'ascent'
+  						),
+  						number_format_i18n( $comments_number ),
+  						 '<span>' . get_the_title() . '</span>'
+  					);
+  				}
+  			?>
 	    </h2>
 	</header>
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 	<nav id="comment-nav-above" class="comment-navigation" role="navigation">
-	    <h5 class="screen-reader-text"><?php _e( 'Comment navigation', 'ascent' ); ?></h5>
+	    <h5 class="screen-reader-text"><?php esc_attr_e( 'Comment navigation', 'ascent' ); ?></h5>
 	    <ul class="pager">
 		<li class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'ascent' ) ); ?></li>
 		<li class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'ascent' ) ); ?></li>
@@ -57,7 +77,7 @@ if ( post_password_required() )
 
 	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 	<nav id="comment-nav-below" class="comment-navigation" role="navigation">
-	    <h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'ascent' ); ?></h1>
+	    <h1 class="screen-reader-text"><?php esc_attr_e( 'Comment navigation', 'ascent' ); ?></h1>
 	    <div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'ascent' ) ); ?></div>
 	    <div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'ascent' ) ); ?></div>
 	</nav><!-- #comment-nav-below -->
@@ -69,22 +89,21 @@ if ( post_password_required() )
 	// If comments are closed and there are comments, let's leave a little note, shall we?
 	if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
     ?>
-    <p class="no-comments"><?php _e( 'Comments are closed.', 'ascent' ); ?></p>
+    <p class="no-comments"><?php esc_attr_e( 'Comments are closed.', 'ascent' ); ?></p>
     <?php endif; ?>
 
     <?php comment_form( $args = array(
 	'id_form'           => 'commentform',  // that's the wordpress default value! delete it or edit it ;)
 	'id_submit'         => 'commentsubmit',
 	'title_reply'       => __( 'Leave a Reply', 'ascent' ),  // that's the wordpress default value! delete it or edit it ;)
+    /* translators: %s is replaced with "string" */
 	'title_reply_to'    => __( 'Leave a Reply to %s', 'ascent' ),  // that's the wordpress default value! delete it or edit it ;)
 	'cancel_reply_link' => __( 'Cancel Reply', 'ascent' ),  // that's the wordpress default value! delete it or edit it ;)
 	'label_submit'      => __( 'Post Comment', 'ascent' ),  // that's the wordpress default value! delete it or edit it ;)
 
 	'comment_field' =>  '<p><textarea placeholder="Start typing..." id="comment" class="form-control" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>',
 
-	'comment_notes_after' => '<p class="form-allowed-tags">' .
-	      __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:', 'ascent' ) .
-	      '</p><div class="alert alert-info">' . allowed_tags() . '</div>'
+	'comment_notes_after' => ''
 
 	// So, that was the needed stuff to have bootstrap basic styles for the form elements and buttons
 
@@ -94,3 +113,5 @@ if ( post_password_required() )
     ));
     ?>
 </div><!-- #comments -->
+
+<?php ascent_comments_after(); ?>

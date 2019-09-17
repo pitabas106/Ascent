@@ -4,8 +4,24 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ascent
+ * @package Ascent
+ * @since 1.0.0 
  */
+
+ if ( ! function_exists( 'ascent_the_custom_logo' ) ) {
+ /**
+  * Displays the optional custom logo.
+  *
+  * Does nothing if the custom logo is not available.
+  *
+  * @since Twenty Sixteen 1.2
+  */
+   function ascent_the_custom_logo() {
+   	if ( function_exists( 'the_custom_logo' ) ) {
+   		the_custom_logo();
+   	}
+   }
+}
 
 if ( ! function_exists( 'ascent_content_nav' ) ) :
 /**
@@ -30,8 +46,8 @@ function ascent_content_nav( $nav_id ) {
     $nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
 
     ?>
-    <nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo $nav_class; ?>">
-	<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'ascent' ); ?></h1>
+    <nav role="navigation" id="<?php echo esc_attr( $nav_id ); ?>" class="<?php echo esc_attr($nav_class); ?>">
+	<h1 class="screen-reader-text"><?php esc_html_e( 'Post navigation', 'ascent' ); ?></h1>
 	<ul class="pager">
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
@@ -62,11 +78,11 @@ if ( ! function_exists( 'ascent_comment' ) ) :
  * Used as a callback by wp_list_comments() for displaying the comments.
  */
 function ascent_comment( $comment, $args, $depth ) {
-    $GLOBALS['comment'] = $comment;
+    // $GLOBALS['comment'] = $comment;
     if ( 'pingback' == $comment->comment_type || 'trackback' == $comment->comment_type ) : ?>
     <li id="comment-<?php comment_ID(); ?>" <?php comment_class( 'media' ); ?>>
 	<div class="comment-body">
-	    <?php _e( 'Pingback:', 'ascent' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'ascent' ), '<span class="edit-link">', '</span>' ); ?>
+	    <?php esc_html_e( 'Pingback:', 'ascent' ); ?> <?php comment_author_link(); ?> <?php edit_comment_link( __( 'Edit', 'ascent' ), '<span class="edit-link">', '</span>' ); ?>
 	</div>
 
     <?php else : ?>
@@ -76,7 +92,7 @@ function ascent_comment( $comment, $args, $depth ) {
 	    <a class="pull-left" href="#">
 		<?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
 	    </a>
-	    
+
 	    <div class="media-body">
 		<div class="media-body-wrap">
 		    <div class="comment-heading">
@@ -86,15 +102,15 @@ function ascent_comment( $comment, $args, $depth ) {
 				<time class="updated" datetime="<?php comment_time( 'c' ); ?>">
 				    <?php printf( _x( '%1$s at %2$s', '1: date, 2: time', 'ascent' ), get_comment_date(), get_comment_time() ); ?>
 				</time>
-			    </a> 
+			    </a>
 			    <?php edit_comment_link( __( '<span style="margin-left: 5px;" class="glyphicon glyphicon-edit"></span> Edit', 'ascent' ), '<span class="edit-link">', '</span>' ); ?>
 			</div>
 		    </div>
 
 		    <?php if ( '0' == $comment->comment_approved ) : ?>
-			<p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.', 'ascent' ); ?></p>
+			<p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'ascent' ); ?></p>
 		    <?php endif; ?>
-		    
+
 		    <div class="comment-content">
 			<?php comment_text(); ?>
 		    </div><!-- .comment-content -->
@@ -176,18 +192,18 @@ if ( ! function_exists( 'ascent_posted_on' ) ) :
  */
 function ascent_posted_on() {
     $time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
-    
+
     $time_string = sprintf( $time_string,
 	esc_attr( get_the_date( 'c' ) ),
 	esc_html( get_the_date('M j, Y') )
     );
-    
+
     $time_string = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark">%3$s</a>',
 	esc_url( get_permalink() ),
 	esc_attr( get_the_time() ),
 	$time_string
     );
-    
+
     printf( __( '<span class="posted-on">%1$s</span> <br><span class="byline">%2$s</span>', 'ascent' ),
 	$time_string,
 	sprintf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s">%3$s</a></span>',

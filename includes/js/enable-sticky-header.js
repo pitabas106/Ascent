@@ -1,6 +1,6 @@
 /**
  * Theme Enable Sticky Navigation
- * @author Pitabas Behera
+ * @author Pitabas106
  */
 jQuery(document).ready(function() {
     function ascentStickyHeader() {

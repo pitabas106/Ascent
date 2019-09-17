@@ -2,7 +2,8 @@
 /**
  * The template for displaying Search Results pages.
  *
- * @package ascent
+ * @package Ascent
+ * @since   0.0.1
  */
 get_header(); ?>
 
@@ -12,21 +13,35 @@ get_header(); ?>
 	<?php if ( have_posts() ) : ?>
 
 		<header class="page-header">
-			<h1 class="entry-title"><?php printf( __( 'Search Results for: %s', 'ascent' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+			<h1 class="entry-title" itemprop="headline">
+				<?php printf( __( 'Search Results for: %s', 'ascent' ), '<span>' . get_search_query() . '</span>' ); ?>
+			</h1>
 		</header><!-- .page-header -->
 
-		<?php // start the loop. ?>
+		<?php ascent_content_while_before(); ?>
+
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'search' ); ?>
+			<?php ascent_entry_before(); ?>
+
+			<?php get_template_part( 'template-parts/content', 'search' ); ?>
+
+			<?php ascent_entry_after(); ?>
 
 		<?php endwhile; ?>
+
+		<?php ascent_content_while_after(); ?>
+
 
 		<?php ascent_content_nav( 'nav-below' ); ?>
 
 	<?php else : ?>
 
+		<?php ascent_entry_before(); ?>
+
 		<?php get_template_part( 'no-results', 'search' ); ?>
+
+		<?php ascent_entry_after(); ?>
 
 	<?php endif; // end of loop. ?>
 

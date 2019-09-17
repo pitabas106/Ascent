@@ -1,9 +1,26 @@
 <?php
 /**
- * ascent functions and definitions
+ * Ascent functions and definitions
  *
- * @package ascent
+ * @package     Ascent
+ * @author      Pitabas106
+ * @copyright   Copyright (c) 2019, Ascent
+ * @link        https://ascenttheme.com/
+ * @since       Ascent 1.0.0
  */
+
+// Do not allow directly accessing this file.
+if ( ! defined( 'ABSPATH' ) ) {
+    exit( 'Direct script access denied.' );
+}
+
+/**
+ * Define Constants
+ */
+define( 'ASCENT_THEME_VERSION', '3.8.0' );
+define( 'ASCENT_THEME_DIR', trailingslashit( get_template_directory() ) );
+define( 'ASCENT_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
+define( 'ASCENT_PRO_URL', 'https://zetamatic.com/downloads/ascent-pro/' );
 
 
 /**
@@ -14,66 +31,38 @@ if ( ! isset( $content_width ) )
 
 
 /*
- * Loads the Options Panel
- *
- * If you're loading from a child theme use stylesheet_directory
- * instead of template_directory
- */
-
-define( 'OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri() . '/options-framework/' );
-require_once dirname( __FILE__ ) . '/options-framework/options-framework.php';
-
-/*
  * This is an example of how to add custom scripts to the options panel.
  * This one shows/hides the an option when a checkbox is clicked.
  *
  * You can delete it if you not using that option
  */
-add_action( 'optionsframework_custom_scripts', 'optionsframework_custom_scripts' );
 
-function optionsframework_custom_scripts() { ?>
+function ascent_customize_style() {
+    ?>
     <script type="text/javascript">
         jQuery(document).ready(function() {
-
-            var $slider_videos = jQuery('#section-slider_video_1, #section-slider_video_2, #section-slider_video_3, #section-slider_video_4, #section-slider_video_5');
-
-            var $slider_images = jQuery('#section-slider_image_1, #section-slider_image_2, #section-slider_image_3, #section-slider_image_4, #section-slider_image_5');
-
-            $slider_videos.hide();
-            $slider_images.hide();
-
-            var slider_type_obj = {
-                '#section-home_page_slider_type_1' : '1',
-                '#section-home_page_slider_type_2' : '2',
-                '#section-home_page_slider_type_3' : '3',
-                '#section-home_page_slider_type_4' : '4',
-                '#section-home_page_slider_type_5' : '5'
-            }
-            jQuery.each(slider_type_obj, function( obj_key, obj_value) {
-                jQuery('body').on('click', obj_key+' .of-radio-img-img', function() {
-                    if(jQuery(this).hasClass('of-radio-img-selected')) {
-                        if(jQuery(this).prev().prev('input[type="radio"]').val() == 'image_type') {
-                          jQuery('#section-slider_image_'+obj_value).fadeToggle(400);
-                          jQuery('#section-slider_video_'+obj_value).hide();
-                        } else {
-                          jQuery('#section-slider_video_'+obj_value).show();
-                          jQuery('#section-slider_image_'+obj_value).hide();
-                        }
-                    }
+          jQuery('.controls#theme-slug-img-container li img').click(function () {
+                jQuery('.controls#theme-slug-img-container li').each(function () {
+                    jQuery(this).find('img').removeClass('theme-slug-radio-img-selected');
                 });
-
-                if (jQuery('#home_page_slider_type_'+obj_value+'_video_type:checked').val() == 'video_type') {
-                    jQuery('#section-slider_video_'+obj_value).show();
-                    jQuery('#section-slider_image_'+obj_value).hide();
-                } else {
-                    jQuery('#section-slider_video_'+obj_value).hide();
-                    jQuery('#section-slider_image_'+obj_value).show();
-                }
+                jQuery(this).addClass('theme-slug-radio-img-selected');
             });
         });
     </script>
-<?php
+
+    <style type="text/css">
+        .controls#theme-slug-img-container li img {
+            border: 2px solid transparent;
+        }
+        #theme-slug-img-container .theme-slug-radio-img-selected {
+            border-radius: 2px;
+            border: 2px solid #FFF;
+            box-shadow: 0px 0px 5px #4c4c4c;
+        }
+    </style>
+    <?php
 }
+add_action( 'customize_controls_print_footer_scripts', 'ascent_customize_style' );
 
 
 if ( ! function_exists( 'ascent_setup' ) ) :
@@ -88,56 +77,129 @@ function ascent_setup() {
     global $cap, $content_width;
 
     /**
-     * Add default posts and comments RSS feed links to head
+    * Add default posts and comments RSS feed links to head
     */
     add_theme_support( 'automatic-feed-links' );
 
     /**
-     * Enable support for Post Thumbnails on posts and pages
-     *
-     * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+    * Enable support for Post Thumbnails on posts and pages
+    *
+    * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
     */
     add_theme_support( 'post-thumbnails' );
 
     // Supporting title tag via add_theme_support (since WordPress 4.1)
-  	add_theme_support( 'title-tag' );
+    add_theme_support( 'title-tag' );
+
+    /*
+    * Enable support for custom logo.
+    */
+    add_theme_support( 'custom-logo', array(
+        'height'      => 200,
+        'width'       => 120,
+        'flex-height' => true,
+    ) );
 
     /**
-     * Enable support for Post Formats
+    * Enable support for Post Formats
     */
     add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
 
     /**
-     * Setup the WordPress core custom background feature.
+    * Setup the WordPress core custom background feature.
     */
     add_theme_support( 'custom-background', apply_filters( 'ascent_custom_background_args', array(
         'default-color' => 'ffffff',
         'default-image' => '',
     ) ) );
 
- /* Add Menu Support */
+
+    /* Set header image */
+    $default_banner_image = ascent_get_options( 'asc_default_banner_image' );
+    $default_banner_image = ( $default_banner_image ) ? $default_banner_image : ASCENT_THEME_URI .'includes/images/banner.jpg';
+
+    //Enable support for custom header.
+    $defaults = array(
+        'width'          => 1920,
+        'height'         => 300,
+        'flex-height'    => false,
+        'flex-width'     => false,
+        'default-image'  => $default_banner_image
+    );
+    add_theme_support( 'custom-header', $defaults );
+
+
+    /* Add Menu Support */
     register_nav_menus(
         array(
-            'main-menu' => __('Main Menu', 'ascent')
+            'main-menu' => __( 'Main Menu', 'ascent' )
         )
     );
     /* Add Post Thumbnails Support and Related Image Sizes */
 
-    add_image_size('blog-page', 732, 9999, false);                  // For Blog Page
-    add_image_size('default-page', 1140, 9999, false);              // Default Page and Full Width Page
-    add_image_size('blog-post-thumb', 732, 447, true);              // For Home Blog Section and Gallery Slider on Single and Blog Page
+    add_image_size( 'blog-page', 732, 9999, false );                  // For Blog Page
+    add_image_size( 'default-page', 1140, 9999, false );              // Default Page and Full Width Page
+    add_image_size( 'blog-post-thumb', 732, 447, true );              // For Home Blog Section and Gallery Slider on Single and Blog Page
 
-  /**
-   * Make theme available for translation
-   * Translations can be filed in the /languages/ directory
-   * If you're building a theme based on ascent, use a find and replace
-   * to change 'ascent' to the name of your theme in all the template files
-  */
-  load_theme_textdomain( 'ascent', get_template_directory() . '/languages' );
+    /**
+    * Make theme available for translation
+    * Translations can be filed in the /languages/ directory
+    * If you're building a theme based on ascent, use a find and replace
+    * to change 'ascent' to the name of your theme in all the template files
+    */
+    load_theme_textdomain( 'ascent', ASCENT_THEME_DIR . 'languages' );
 
+    /**
+    * This function allow to import all old options to customizer options
+    */
+    ascent_import_old_theme_options_to_customizer();
+
+    /* Redirect to Info page */
+    global $pagenow;
+    if ( is_admin() && 'themes.php' == $pagenow && isset( $_GET['activated'] ) ) {
+        wp_redirect( add_query_arg( array(
+            'page'    => 'ascent-details',
+            'updated' => 'true'
+        ), admin_url( 'themes.php' ) ) );
+        exit ();
+    }
+ 
 }
 endif; // ascent_setup
 add_action( 'after_setup_theme', 'ascent_setup' );
+
+
+ /** 
+ * Import old theme options to customizer settings.
+ * Delete the old theme options once imported.
+ * Added a "imported" flag to database.
+ */
+if( !function_exists( 'ascent_import_old_theme_options_to_customizer' ) ) {
+  function ascent_import_old_theme_options_to_customizer() {
+    
+    if( ! get_option( 'ascent_imported_old_options' ) ) {
+        
+        $option_name = get_option( 'stylesheet' );
+        $option_name = preg_replace( "/\W/", "_", strtolower( $option_name ) );
+        $old_options = get_option( $option_name );
+
+        if( ! empty($old_options ) && isset( $old_options ) ) {
+            $theme_mods_ascent = get_option( 'theme_mods_ascent' );
+            $theme_mods_ascent = $theme_mods_ascent['ascent_theme_options'];
+
+            foreach( $old_options as $name => $value ) {
+                $theme_mods_ascent['asc_'.$name] = $value;
+            }
+
+            if($theme_mods_ascent) {
+                set_theme_mod( 'ascent_theme_options', $theme_mods_ascent );  
+            }
+            update_option( 'ascent_imported_old_options', '1', 'yes' );
+            delete_option( 'ascent');
+        }
+    } 
+  }
+}
 
 
 /**
@@ -161,7 +223,6 @@ function ascent_widgets_init() {
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
     ) );
-
 }
 add_action( 'widgets_init', 'ascent_widgets_init' );
 
@@ -171,59 +232,71 @@ add_action( 'widgets_init', 'ascent_widgets_init' );
  *
  */
 function ascent_scripts() {
-    $protocol = is_ssl() ? 'https' : 'http';
-    if(of_get_option('body_font_family')) {
-      $fonts_array = explode('|||', of_get_option('body_font_family'));
-      wp_enqueue_style('ascent-google-font', $fonts_array[1]);
-    } else {
-      wp_enqueue_style('google-opensans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
-    }
-    // load bootstrap css
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/includes/resources/bootstrap/css/bootstrap.min.css' );
+    $enable_swipebox        = ascent_get_options( 'asc_enable_swipebox' );
+    $enable_sticky_header   = ascent_get_options( 'asc_enable_sticky_header' );
+    $body_font_family       = ascent_get_options( 'asc_body_font_family' );
+    $protocol               = is_ssl() ? 'https' : 'http';
+    $min                    = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
-    if(of_get_option('enable_swipebox')) { //check if enable swipebox from theme options
-        wp_enqueue_style( 'swipebox', get_template_directory_uri() . '/includes/css/swipebox.min.css' );
+    if( $body_font_family ) {
+        $fonts_array = explode( '|||', $body_font_family );
+        wp_enqueue_style('ascent-google-font', $fonts_array[1]);
+    } else {
+        wp_enqueue_style('google-opensans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
     }
-    wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/includes/css/owl.carousel.min.css' );
-    wp_enqueue_style( 'owl-theme', get_template_directory_uri() . '/includes/css/owl.theme.default.min.css' );
-    wp_enqueue_style( 'ascent-animations', get_template_directory_uri() . '/includes/css/animations.css' );
-    wp_enqueue_style( 'meanmenu', get_template_directory_uri() . '/includes/css/meanmenu.min.css' );
-    wp_enqueue_style( 'ascent-main', get_template_directory_uri() . '/includes/css/main.css' );
+
+    // load bootstrap css
+    wp_enqueue_style( 'bootstrap', ASCENT_THEME_URI . 'includes/resources/bootstrap/css/bootstrap'. $min .'.css' );
+
+    if( $enable_swipebox ) { //check if enable swipebox from theme options
+        wp_enqueue_style( 'swipebox', ASCENT_THEME_URI . 'includes/css/swipebox'. $min .'.css' );
+    }
+    wp_enqueue_style( 'owl-carousel', ASCENT_THEME_URI . 'includes/css/owl.carousel'. $min .'.css' );
+    wp_enqueue_style( 'owl-theme', ASCENT_THEME_URI . 'includes/css/owl.theme.default'. $min .'.css' );
+    wp_enqueue_style( 'ascent-animations', ASCENT_THEME_URI . 'includes/css/animations'. $min .'.css' );
+    wp_enqueue_style( 'meanmenu', ASCENT_THEME_URI . 'includes/css/meanmenu'. $min .'.css' );
+    wp_enqueue_style( 'ascent-main', ASCENT_THEME_URI . 'includes/css/main'. $min .'.css' );
+
+    // load ascent styles
+    wp_enqueue_style( 'ascent-style', get_stylesheet_uri() );
 
     // load bootstrap js
-    wp_enqueue_script('bootstrap', get_template_directory_uri().'/includes/resources/bootstrap/js/bootstrap.min.js', array('jquery') );
+    wp_enqueue_script( 'bootstrap', ASCENT_THEME_URI.'includes/resources/bootstrap/js/bootstrap'. $min .'.js', array( 'jquery' ) );
 
     // load bootstrap wp js
-    wp_enqueue_script( 'ascent-bootstrapwp', get_template_directory_uri() . '/includes/js/bootstrap-wp.js', array('jquery') );
+    wp_enqueue_script( 'ascent-bootstrapwp', ASCENT_THEME_URI . 'includes/js/bootstrap-wp'. $min .'.js', array( 'jquery' ) );
 
-    wp_enqueue_script( 'ascent-skip-link-focus-fix', get_template_directory_uri() . '/includes/js/skip-link-focus-fix.js', array(), '20130115', true );
+    wp_enqueue_script( 'ascent-skip-link-focus-fix', ASCENT_THEME_URI . 'includes/js/skip-link-focus-fix'. $min .'.js', array(), ASCENT_THEME_VERSION, true );
+
+    // Load the html5 shiv.
+    wp_enqueue_script( 'html5', ASCENT_THEME_URI . 'includes/js/html5'. $min .'.js', array(), ASCENT_THEME_VERSION, true );
+    wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
+
 
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
+    wp_enqueue_script( 'comment-reply' );
     }
 
     if ( is_singular() && wp_attachment_is_image() ) {
-        wp_enqueue_script( 'ascent-keyboard-image-navigation', get_template_directory_uri() . '/includes/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
+    wp_enqueue_script( 'ascent-keyboard-image-navigation', ASCENT_THEME_URI . 'includes/js/keyboard-image-navigation'. $min .'.js', array( 'jquery' ), ASCENT_THEME_VERSION );
     }
 
-    wp_enqueue_script( 'smoothscroll', get_template_directory_uri() . '/includes/js/smoothscroll.js', array('jquery') );
-
-    if(of_get_option('enable_swipebox')) { //check if enable swipebox from theme options
-        wp_enqueue_script( 'swipebox', get_template_directory_uri() . '/includes/js/jquery.swipebox.min.js', array('jquery') );
-        wp_enqueue_script( 'ascent-swipebox-config', get_template_directory_uri() . '/includes/js/swipebox-config.js', array('jquery') );
+    if( $enable_swipebox ) { //check if enable swipebox from theme options
+    wp_enqueue_script( 'swipebox', ASCENT_THEME_URI . 'includes/js/jquery.swipebox.min.js', array( 'jquery' ) );
+    wp_enqueue_script( 'ascent-swipebox-config', ASCENT_THEME_URI . 'includes/js/swipebox-config'. $min .'.js', array('jquery') );
     }
 
-    wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/includes/js/owl.carousel.min.js', array('jquery') );
-    wp_enqueue_script( 'appear', get_template_directory_uri() . '/includes/js/jquery.appear.js', array('jquery') );
-    wp_enqueue_script( 'meanmenu', get_template_directory_uri() . '/includes/js/jquery.meanmenu.min.js', array('jquery') );
-    wp_enqueue_script( 'velocity', get_template_directory_uri() . '/includes/js/jquery.velocity.js', array('jquery') );
-    wp_enqueue_script( 'ascent-appear-config', get_template_directory_uri() . '/includes/js/appear.config.js', array('jquery') );
+    wp_enqueue_script( 'owl-carousel', ASCENT_THEME_URI . 'includes/js/owl.carousel'. $min .'.js', array( 'jquery' ) );
+    wp_enqueue_script( 'appear', ASCENT_THEME_URI . 'includes/js/jquery.appear'. $min .'.js', array( 'jquery' ) );
+    wp_enqueue_script( 'meanmenu', ASCENT_THEME_URI . 'includes/js/jquery.meanmenu'. $min .'.js', array( 'jquery' ) );
+    wp_enqueue_script( 'velocity', ASCENT_THEME_URI . 'includes/js/jquery.velocity'. $min .'.js', array( 'jquery' ) );
+    wp_enqueue_script( 'ascent-appear-config', ASCENT_THEME_URI . 'includes/js/appear.config'. $min .'.js', array( 'jquery' ) );
 
     // Theme main js
-    wp_enqueue_script( 'ascent-themejs', get_template_directory_uri() . '/includes/js/main.js', array('jquery') );
+    wp_enqueue_script( 'ascent-themejs', ASCENT_THEME_URI . 'includes/js/main'. $min .'.js', array( 'jquery' ) );
 
-    if(of_get_option('enable_sticky_header')) {
-        wp_enqueue_script( 'ascent-enable-sticky-header', get_template_directory_uri() . '/includes/js/enable-sticky-header.js', array('jquery') );
+    if( $enable_sticky_header ) {
+    wp_enqueue_script( 'ascent-enable-sticky-header', ASCENT_THEME_URI . '/includes/js/enable-sticky-header'. $min .'.js', array( 'jquery' ) );
     }
 
 }
@@ -232,113 +305,149 @@ add_action( 'wp_enqueue_scripts', 'ascent_scripts' );
 
 
 /**
+ * Ascent theme options
+ *
+ */
+function ascent_get_options( $id, $default = false ) {
+    // assigning theme name
+    $themename              = get_option( 'stylesheet' );
+    $themename              = preg_replace( "/\W/", "_", strtolower( $themename ) );
+    $themename_option_slug  = 'ascent_theme_options';
+
+    // getting options value
+    $ascent_options = get_theme_mod( $themename_option_slug );
+    if ( isset( $ascent_options[ $id ] ) ) {
+        return $ascent_options[ $id ];
+    } else {
+        return $default;
+    }
+}
+
+
+/**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/includes/template-tags.php';
+require ASCENT_THEME_DIR . 'includes/template-tags.php';
+require_once ASCENT_THEME_DIR . 'includes/core/theme-hooks.php';
 
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/includes/extras.php';
+require ASCENT_THEME_DIR . 'includes/extras.php';
+
 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/includes/customizer.php';
+require_once ASCENT_THEME_DIR . 'includes/customizer/class-ascent-customizer.php';
+
 
 /**
- * Load Jetpack compatibility file.
+ * Load info.
  */
-require get_template_directory() . '/includes/jetpack.php';
+if ( is_admin() ) {
+  require ASCENT_THEME_DIR.'includes/info/class.info.php';
+  require ASCENT_THEME_DIR.'includes/info/info.php';
+}
 
 /**
  * Dynamic CSS.
  */
-require_once get_template_directory() . '/includes/css/theme-color-scheme/dynamic-css.php';
+require_once ASCENT_THEME_DIR . 'includes/css/theme-color-scheme/dynamic-css.php';
 
+
+/**
+ * Jetpack Compatibility
+ */
+require_once ASCENT_THEME_DIR . 'includes/compatibility/class-ascent-jetpack.php';
 
 
 /* Theme Social media icons  */
-if( !function_exists( 'ascent_socialmedia_navs' ) ){
+if( ! function_exists( 'ascent_socialmedia_navs' ) ){
     function ascent_socialmedia_navs() {
         return array(
-            'twitter_url' => 'fa fa-twitter',
-            'facebook_url' => 'fa fa-facebook',
-            'google_plus_url' => 'fa fa-google-plus',
-            'linkedin_url' => 'fa fa-linkedin',
-            'instagram_url' => 'fa fa-instagram',
-            'youtube_url' => 'fa fa-youtube',
-            'skype_url' => 'fa fa-skype',
-            'dribbble_url' => 'fa fa-dribbble',
-            'digg_url' => 'fa fa-digg',
-            'github_url' => 'fa fa-github',
-            'delicious_url' => 'fa fa-delicious',
-            'reddit_url' => 'fa fa-reddit',
-            'pinterest_url' => 'fa fa-pinterest',
-            'flickr_url' => 'fa fa-flickr',
-            'rss_url' => 'fa fa-rss'
+            'asc_twitter_url'           => 'fab fa-twitter',
+            'asc_facebook_url'          => 'fab fa-facebook',
+            'asc_google_plus_url'       => 'fab fa-google-plus',
+            'asc_linkedin_url'          => 'fab fa-linkedin',
+            'asc_instagram_url'         => 'fab fa-instagram',
+            'asc_youtube_url'           => 'fab fa-youtube',
+            'asc_skype_url'             => 'fab fa-skype',
+            'asc_dribbble_url'          => 'fab fa-dribbble',
+            'asc_digg_url'              => 'fab fa-digg',
+            'asc_github_url'            => 'fab fa-github',
+            'asc_delicious_url'         => 'fab fa-delicious',
+            'asc_reddit_url'            => 'fab fa-reddit',
+            'asc_pinterest_url'         => 'fab fa-pinterest',
+            'asc_flickr_url'            => 'fab fa-flickr',
+            'asc_rss_url'               => 'fas fa-rss-square',
+            'asc_whatsapp_number'       => 'fab fa-whatsapp-square'
         );
     }
 }
 
-/* Theme Home Slider  */
-if( !function_exists( 'ascent_home_slider' ) ){
+/* Theme Home Slider options */
+if( ! function_exists( 'ascent_home_slider' ) ){
     function ascent_home_slider() {
         return array(
             'item_1' => array(
-                'image' => 'slider_image_1',
-                'video' => 'slider_video_1',
-                'description' => 'slider_description_1',
-                'slider_type' => 'home_page_slider_type_1'
+                'image'         => 'asc_slider_image_1',
+                'video'         => 'asc_slider_video_1',
+                'description'   => 'asc_slider_description_1',
             ),
             'item_2' => array(
-                'image' => 'slider_image_2',
-                'video' => 'slider_video_2',
-                'description' => 'slider_description_2',
-                'slider_type' => 'home_page_slider_type_2'
+                'image'         => 'asc_slider_image_2',
+                'video'         => 'asc_slider_video_2',
+                'description'   => 'asc_slider_description_2',
             ),
             'item_3' => array(
-                'image' => 'slider_image_3',
-                'video' => 'slider_video_3',
-                'description' => 'slider_description_3',
-                'slider_type' => 'home_page_slider_type_3'
+                'image'         => 'asc_slider_image_3',
+                'video'         => 'asc_slider_video_3',
+                'description'   => 'asc_slider_description_3',
             ),
             'item_4' => array(
-                'image' => 'slider_image_4',
-                'video' => 'slider_video_4',
-                'description' => 'slider_description_4',
-                'slider_type' => 'home_page_slider_type_4'
+                'image'         => 'asc_slider_image_4',
+                'video'         => 'asc_slider_video_4',
+                'description'   => 'asc_slider_description_4',
             ),
             'item_5' => array(
-                'image' => 'slider_image_5',
-                'video' => 'slider_video_5',
-                'description' => 'slider_description_5',
-                'slider_type' => 'home_page_slider_type_5'
+                'image'         => 'asc_slider_image_5',
+                'video'         => 'asc_slider_video_5',
+                'description'   => 'asc_slider_description_5',
             ),
         );
     }
 }
 
-if( !function_exists( 'ascent_generate_youtube_embed_url' ) ) {
-    function ascent_generate_youtube_embed_url($url) {
-        preg_match(
-    		'/[\\?\\&]v=([^\\?\\&]+)/',
-    		$url,
-    		$matches
-    	);
-        //the ID of the YouTube URL: x6qe_kVaBpg
-        $id = $matches[1];
-        return '//www.youtube.com/embed/'.$id;
+
+/* Generate YouTube embed url */
+if( ! function_exists( 'ascent_generate_youtube_embed_url' ) ) {
+    function ascent_generate_youtube_embed_url( $url ) {
+
+        $shortUrlRegex  = '/youtu.be\/([a-zA-Z0-9_-]+)\??/i';
+        $longUrlRegex   = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))([a-zA-Z0-9_-]+)/i';
+
+        if (preg_match($longUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+
+        if (preg_match($shortUrlRegex, $url, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+
+        return '//www.youtube.com/embed/'.$youtube_id;
     }
 }
 
+
+/* Generate Vimeo embed url */
 if( !function_exists( 'ascent_generate_vimeo_embed_url' ) ) {
-    function ascent_generate_vimeo_embed_url($url) {
+    function ascent_generate_vimeo_embed_url( $url ) {
         preg_match(
-    		'/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/',
-    		$url,
-    		$matches
-    	);
+          '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/',
+          $url,
+          $matches
+        );
 
         //the ID of the Vimeo URL: 71673549
         $id = $matches[2];
@@ -347,11 +456,14 @@ if( !function_exists( 'ascent_generate_vimeo_embed_url' ) ) {
     }
 }
 
+
+/* Check video type */
 if( !function_exists( 'ascent_check_video_type' ) ) {
-    function ascent_check_video_type($url) {
-        if (strpos($url, 'youtube') > 0) {
+
+    function ascent_check_video_type( $url ) {
+        if ( strpos( $url, 'youtube' ) > 0 ) {
             return 'youtube';
-        } elseif (strpos($url, 'vimeo') > 0) {
+        } elseif ( strpos( $url, 'vimeo') > 0 ) {
             return 'vimeo';
         } else {
             return 'unknown';
@@ -359,86 +471,54 @@ if( !function_exists( 'ascent_check_video_type' ) ) {
     }
 }
 
-if( !function_exists( 'ascent_theme_option_custom_style' ) ) {
-    function ascent_theme_option_custom_style() {
-?>
-    <style type="text/css">
-        <?php if(of_get_option('body_text_color')): ?>
-            body {
-                color: <?php echo of_get_option('body_text_color'); ?>;
-            }
-        <?php endif; ?>
-
-        <?php if(of_get_option('body_link_color')): ?>
-            body a {
-                color: <?php echo of_get_option('body_link_color'); ?>;
-            }
-        <?php endif; ?>
-
-        <?php if(of_get_option('footer_top_border_color')): ?>
-            #colophon {
-                border-color: <?php echo of_get_option('footer_top_border_color'); ?>;
-            }
-        <?php endif; ?>
-
-        <?php if(of_get_option('footer_background_color')): ?>
-            #colophon {
-                background-color: <?php echo of_get_option('footer_background_color'); ?>;
-            }
-        <?php endif; ?>
-        <?php if(of_get_option('footer_background_bottom_color')): ?>
-            #footer-info {
-                background-color: <?php echo of_get_option('footer_background_bottom_color'); ?>;
-            }
-        <?php endif; ?>
-    </style>
-<?php
-    }
-}
-add_action( 'wp_head', 'ascent_theme_option_custom_style' );
-
 
 /*
 * The CSS file selected in the options panel 'stylesheet' option
 * is loaded on the theme front end
 */
 if( !function_exists( 'ascent_options_stylesheets_alt_style' ) ) {
-    function ascent_options_stylesheets_alt_style()   {
-       if ( of_get_option('theme_color_scheme') && of_get_option('theme_color_scheme') !== 'default' ) {
-           $select_color_scheme = of_get_option('theme_color_scheme');
-           $color_scheme_css_path = get_template_directory_uri() . '/includes/css/theme-color-scheme/'.$select_color_scheme.'.css';
-
-           wp_enqueue_style( $select_color_scheme, $color_scheme_css_path, array(), null);
-       }
+    function ascent_options_stylesheets_alt_style() {
+        $theme_color_scheme = ascent_get_options( 'asc_theme_color_scheme' );
+        if ( $theme_color_scheme && $theme_color_scheme !== 'default' ) {
+            $select_color_scheme = ascent_get_options( 'asc_theme_color_scheme' );
+            $color_scheme_css_path = ASCENT_THEME_URI . 'includes/css/theme-color-scheme/'.$select_color_scheme.'.css';
+            wp_enqueue_style( $select_color_scheme, $color_scheme_css_path, array(), null );
+        }
     }
 }
 add_action( 'wp_enqueue_scripts', 'ascent_options_stylesheets_alt_style' );
 
-if( !function_exists( 'ascent_string_encode' ) ) {
-  function ascent_string_encode($string) {
-    $chars_array = array(
-    'A' => 'Z',  'B' => 'Y',  'C' => 'X',  'D' => 'W',  'E' => 'V',  'F' => 'U',  'G' => 'T',  'H' => 'S',  'I' => 'R',  'J' => 'Q',  'K' => 'P',  'L' => 'O',  'M' => 'N',  'N' => 'M',  'O' => 'L',  'P' => 'K',  'Q' => 'J',  'R' => 'I',  'S' => 'H',  'T' => 'G',  'U' => 'F',  'V' => 'E',  'W' => 'D',  'X' => 'C',  'Y' => 'B',  'Z' => 'A',  '0' => 'a',  '1' => 'b',  '2' => 'c',  '3' => 'd',  '4' => 'e',  '5' => 'f',  '6' => 'g',  '7' => 'h',  '8' => 'i',  '9' => 'j',  '.' => 'k',  '@' => 'l',  '~' => 'm',  '+' => 'n',  '%' => 'o',  '^' => 'p',  '!' => 'q',  '*' => 'r',  '(' => 's',  ')' => 't',  '[' => 'u',  ']' => 'v',  '{' => 'w',  '}' => 'x',  '<' => 'y',  '/' => 'z');
 
-    $string = str_split(strtoupper($string));
-    $encode_array = array();
-    for($i = 0; $i < count($string); $i++) {
-      $encode_array[] = isset($chars_array[$string[$i]]) ? $chars_array[$string[$i]] : $string[$i];
+if ( ! function_exists( 'ascent_get_pro_url' ) ) :
+    /**
+    * Returns an URL with utm tags
+    * the admin settings page.
+    *
+    * @param string $url    URL fo the site.
+    * @param string $source utm source.
+    * @param string $medium utm medium.
+    * @param string $campaign utm campaign.
+    * @return mixed
+    */
+    function ascent_get_pro_url( $url, $source = '', $medium = '', $campaign = '' ) {
+
+        $url = trailingslashit( $url );
+
+        // Set up our URL if we have a source.
+        if ( isset( $source ) ) {
+            $url = add_query_arg( 'utm_source', sanitize_text_field( $source ), $url );
+        }
+        // Set up our URL if we have a medium.
+        if ( isset( $medium ) ) {
+            $url = add_query_arg( 'utm_medium', sanitize_text_field( $medium ), $url );
+        }
+        // Set up our URL if we have a campaign.
+        if ( isset( $campaign ) ) {
+            $url = add_query_arg( 'utm_campaign', sanitize_text_field( $campaign ), $url );
+        }
+
+        return esc_url( $url );
     }
-    return implode('', $encode_array);
-  }
-}
 
-if( !function_exists( 'ascent_admin_notice_theme_support' ) ) {
-  function ascent_admin_notice_theme_support() {
-    $admin_email = get_option('admin_email');
-    $admin_email = ascent_string_encode($admin_email);
-    $premium_support_url = 'https://ascenttheme.com/premium-support/BVRbpyPMy4Og4KwN/'.urlencode($admin_email);
-  ?>
-    <div class="notice notice-success is-dismissible">
-      <p style="font-size: 15px;"><?php _e( 'Are you having any trouble regarding this theme? Do you want to do more with this theme? Then subscribe to the Ascent Premium Support button.', 'ascent' ); ?></p>
-    	<p style="margin: 2px 0 10px 0;"><a href="<?php echo esc_url($premium_support_url); ?>" target="_blank" class="button button-primary"><?php _e( 'Ascent Premium Support', 'ascent' ); ?></a></p>
-    </div>
-    <?php
-  }
-}
-add_action( 'admin_notices', 'ascent_admin_notice_theme_support' );
+endif;
+

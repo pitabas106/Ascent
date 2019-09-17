@@ -4,7 +4,8 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package ascent
+ * @package Ascent
+ * @since 1.0.0
  */
 
 /**

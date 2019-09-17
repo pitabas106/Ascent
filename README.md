@@ -1,34 +1,40 @@
 == Ascent ==
 
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-menu, featured-images, post-formats, theme-options, translation-ready
-Tested up to: 4.9.6
-Stable tag: 3.6
+Tested up to: 5.2.3
+Stable tag: 3.8.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+
 == Bundled Resources ==
-* Font Awesome: http://fortawesome.github.io/Font-Awesome/
-* Options Framework: http://wptheming.com/
+* Font Awesome: https://fontawesome.com
 * BootStrap: http://getbootstrap.com/
 * Owl carousel: http://owlgraphic.com/owlcarousel/
 * SwipeBox: http://github.com/brutaldesign/swipebox
 * MeanMenu: https://github.com/meanthemes/meanMenu
 * jQueryAppear: https://github.com/morr/jquery.appear/
-* SmoothScrolljs: https://gist.github.com/galambalazs/6477177/
+* Theme Hook Alliance: https://github.com/zamoose/themehookalliance
 
 == Description ==
 
-Ascent Theme is a fully responsive WordPress theme that looks elegant on any devices. It is simple, clean and lightweight WordPress theme based on the most modern technologies like HTML5 and CSS3. The theme support all modern browsers like Firefox, Chrome, Safari, Opera and Internet Explorer 8, 9 and 10.
-If you are looking for a clean professional space, which accommodates your visuals and yet provides you with ample amount of textual area, Ascent is your perfect find. You can check out the demo at https://ascenttheme.com/ and get premium support: https://www.nettantra.com/wordpress-maintenance/.
+Ascent is a fully responsive theme which perfectly adjusts as per your device’s screen and resolution. A multipurpose, beautiful and clean theme perfect for businesses, portfolios, and blogs. Easily customize the theme as per your liking. Also, supports WooCommerce integration for eCommerce businesses.
+
+It is compatible with all the major page builders like Elementor, SiteOrigin etc. 
+
+Ascent is SEO friendly & Schema.org code integrated to help your website rank organically for specific keywords and phrases in the SERP(Search engine results page). 
+
+The theme is light-weight to help your website load quickly, so the users don’t have to wait too long. Other features: RTL, Translation Ready, Regularly updated.
+
+You can check out the demo at https://ascenttheme.com/
 
 
 * Fully Bootstrap Power
 * FontAwesome implementation
-* jQuery smoothScroll
 * jQuery SwipeBox
 * Setup jQuery MeanMenu and Velocity for beautiful responsive animated menu.
-* Implement jQuery appear for tracking element's appearance in browser viewport.
-* Implement Theme Options for customize the Theme
+* Implement jQuery appear for tracking element's appearance in the browser viewport.
+* Implement Theme Options for customizing the Theme
 * A just right amount of lean, well-commented, modern, HTML5 templates.
 * A helpful 404 template.
 * Custom template tags in `includes/template-tags.php` that keep your templates clean and neat and prevent code duplication.
@@ -48,7 +54,7 @@ If you are looking for a clean professional space, which accommodates your visua
 == Frequently Asked Questions ==
 
 
-= Does Ascent support Theme Options?  =
+= Does Ascent support Cutomizer Options?  =
 
 Yes! these are the following options
 * Header settings
@@ -73,11 +79,9 @@ Ascent supports Aside, Image, Video, Quote and Link post formats.
 
 You can add Slider following these steps:
 
-* In your admin panel, go to Appearance -> Theme Options
-* Open the Home Page Slider Tab
+* In your admin panel, go to Customizer -> Home Page Option -> Home Page Slider
 * Enable the 'Do you want to display slider on homepage ?' checkbox.
 * Provide the require Images and Description.
-* Save the Options.
 
 = Does Ascent use featured images? =
 
@@ -85,12 +89,44 @@ Featured Images look best at 732 pixels wide or larger.
 
 = Does Ascent support multiple color scheme? =
 
-Yes! You can choose your color scheme under Appearance -> Theme Options -> Styling(Tab).
+Yes! You can choose your color scheme under Customizer -> Styling section
 
 
 = Changelog =
 
-### Version 3.0.
+
+### Version 3.8.1
+- Updated Font-Awesome 5.10.2
+
+### Version 3.7.0
+- Added Theme Hook Alliance
+- Updated template structures
+
+
+### Version 3.8.0
+- Fixed single page template issue
+
+### Version 3.6.0
+- Removed HTML allowed_tags
+- Added customizer option for footer copyright section
+
+### Version 3.5.0
+- Fixed CSS issue
+
+### Version 3.4
+- Changed Theme options to Customizer
+- Removed jQuery smoothScroll
+
+### Version 3.3
+- Fixed: Sidebar issue and theme option issue
+
+### Version 3.2
+- Fixed: esc_url, esc_attr, esc_html issue and remove Admin notice
+
+### Version 3.1
+- Update: Theme main Screenshot
+
+### Version 3.0
 - Update: Theme version
 
 ### Version 2.0.9

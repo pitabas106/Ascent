@@ -1,6 +1,6 @@
 /**
  * Enable Swipebox- A touchable jQuery lightbox
- * @author Pitabas Behera
+ * @author Pitabas106
  */
 jQuery(document).ready(function() {
     if (jQuery().swipebox) {

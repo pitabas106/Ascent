@@ -2,39 +2,47 @@
 /**
  * The sidebar containing the main widget area
  *
- * @package ascent
+ * @package Ascent
+ * @since 1.0.0
  */
 ?>
-	
+
+<?php ascent_sidebars_before(); ?>
+
 <div class="sidebar">
 
     <?php // add the class "panel" below here to wrap the sidebar in Bootstrap style ;) ?>
     <div class="sidebar-padder">
 
-	<?php do_action( 'before_sidebar' ); ?>
-	<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
+    	<?php ascent_sidebar_top()  ?>
 
-	    <aside id="search" class="widget widget_search">
-		<?php get_search_form(); ?>
-	    </aside>
+    	<?php if ( ! dynamic_sidebar( 'sidebar-1' ) ) : ?>
 
-	    <aside id="archives" class="widget widget_archive">
-		<h3 class="widget-title"><?php _e( 'Archives', 'ascent' ); ?></h3>
-		<ul>
-		    <?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-		</ul>
-	    </aside>
+    	    <aside id="search" class="widget widget_search">
+    		   <?php get_search_form(); ?>
+    	    </aside>
 
-	    <aside id="meta" class="widget widget_meta"> 
-		<h3 class="widget-title"><?php _e( 'Meta', 'ascent' ); ?></h3>
-		<ul>
-		    <?php wp_register(); ?>
-		    <li><?php wp_loginout(); ?></li>
-		    <?php wp_meta(); ?>
-		</ul>
-	    </aside>
+    	    <aside id="archives" class="widget widget_archive">
+      		    <h3 class="widget-title"><?php esc_html_e( 'Archives', 'ascent' ); ?></h3>
+          		<ul>
+          		    <?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
+          		</ul>
+    	    </aside>
 
-	<?php endif; ?>
-	    
+    	    <aside id="meta" class="widget widget_meta">
+        		<h3 class="widget-title"><?php esc_html_e( 'Meta', 'ascent' ); ?></h3>
+        		<ul>
+        		    <?php wp_register(); ?>
+        		    <li><?php wp_loginout(); ?></li>
+        		    <?php wp_meta(); ?>
+        		</ul>
+            </aside>
+
+    	<?php endif; ?>
+
+        <?php ascent_sidebar_bottom(); ?>
+
     </div><!-- close .sidebar-padder -->
 </div><!-- close .sidebar -->
+
+<?php ascent_sidebars_after(); ?>

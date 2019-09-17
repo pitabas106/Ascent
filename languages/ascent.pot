@@ -1,0 +1,760 @@
+# Copyright (C) 2019 Pitabas Behera
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Ascent 3.8.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/ascent\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-09-17T01:21:24+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.2.0\n"
+"X-Domain: ascent\n"
+
+#. Theme Name of the theme
+msgid "Ascent"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://ascenttheme.com/"
+msgstr ""
+
+#. Description of the theme
+msgid "Ascent is a fully responsive theme which perfectly adjusts as per your device’s screen and resolution. A multipurpose, beautiful and clean theme perfect for businesses, portfolios, and blogs. Easily customize the theme as per your liking. Also, supports WooCommerce integration for eCommerce businesses. It is compatible with all the major page builders like Elementor, SiteOrigin etc. Ascent is SEO friendly & Schema.org code integrated to help your website rank organically for specific keywords and phrases in the SERP(Search engine results page). The theme is light-weight to help your website load quickly, so the users don’t have to wait too long. Other features: RTL, Translation Ready, Regularly updated."
+msgstr ""
+
+#. Author of the theme
+msgid "Pitabas Behera"
+msgstr ""
+
+#. Author URI of the theme
+msgid "http://ascenttheme.com/"
+msgstr ""
+
+#: functions.php:135
+msgid "Main Menu"
+msgstr ""
+
+#: functions.php:210
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:219
+msgid "Sidebar Footer"
+msgstr ""
+
+#: 404.php:16
+msgid "404"
+msgstr ""
+
+#: 404.php:19
+msgid "Oops! Something went wrong here."
+msgstr ""
+
+#: 404.php:20
+msgid "Nothing could be found at this location."
+msgstr ""
+
+#: 404.php:21
+msgid "Try going back to the"
+msgstr ""
+
+#: 404.php:21
+msgid "Homepage"
+msgstr ""
+
+#: 404.php:21
+msgid "instead?"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full Width Page"
+msgstr ""
+
+#: no-results.php:17
+msgid "Nothing Found"
+msgstr ""
+
+#: no-results.php:25
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: no-results.php:29
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: no-results.php:34
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#. translators: %s: post title
+#: comments.php:36
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:41
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:58
+#: comments.php:80
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:60
+#: comments.php:81
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:61
+#: comments.php:82
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:92
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:98
+msgid "Leave a Reply"
+msgstr ""
+
+#. translators: %s is replaced with "string"
+#: comments.php:100
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:101
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:102
+msgid "Post Comment"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:138
+msgid "Site Title & Description Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:141
+msgid "Header Settings"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:143
+msgid "Styling"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:169
+msgid "More Options Available in Pro!"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:185
+msgid "Phone Number"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:189
+msgid "Provide the phone number."
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:197
+msgid "Email ID"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:201
+msgid "Provide the email address."
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:208
+msgid "Other Settings"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:218
+msgid "Do you want to enable the Swipebox plugin?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:230
+msgid "Do you want to enable the sticky header?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:242
+msgid "Do you want to enable scroll to top feature?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:259
+msgid "Select Google Font"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:260
+msgid "Open Sans"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:261
+msgid "Raleway"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:262
+msgid "Roboto"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:263
+msgid "PT Sans"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:275
+msgid "Select Font Style"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:276
+msgid "Configure Font Style."
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:288
+msgid "Body Text Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:301
+msgid "Body Link Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:314
+msgid "Footer Top Border Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:327
+msgid "Footer Background Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:340
+msgid "Footer Bottom Background Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:359
+msgid "Theme Color Scheme"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:384
+msgid "Custom Theme Color"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:385
+msgid "User can customize the theme color. <em>(Note: If you wants to use the above \"Theme Color Scheme\" option, you should be clear this \"Custom Theme Color\" option. Otherwise this \"Custom Theme Color\" option will override the \"Theme Color Scheme\" option.)</em>."
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:395
+msgid "Social Media"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:405
+msgid "Facebook URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:416
+msgid "Twitter URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:427
+msgid "LinkedIn URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:439
+msgid "Google Plus URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:450
+msgid "Instagram URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:461
+msgid "YouTube URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:472
+msgid "Skype URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:483
+msgid "Dribbble URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:494
+msgid "Digg URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:505
+msgid "Github URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:516
+msgid "Delicious URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:527
+msgid "Reddit URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:538
+msgid "Pinterest URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:549
+msgid "RSS URL"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:560
+msgid "Whatsapp Number"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:561
+msgid "Please enter the number using your country code e.g +91 7735899277"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:572
+msgid "Home Page Slider"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:573
+msgid "In this Slider section, you can upload image or video, only one thing will populate in the Home page slider"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:583
+msgid "Do you want to display slider on homepage?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:595
+msgid "Do you want to display the static banner image ?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:607
+msgid "Do you want to enable slider overlay dotted bg ?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:619
+msgid "Do you want to enable slider dotted pagination?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:631
+msgid "Do you want to enable slider left/right navigation?"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:645
+msgid "Enter the Video Height in Pixel"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:659
+msgid "Slider Image 1"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:662
+#: includes/customizer/class-ascent-customizer.php:703
+#: includes/customizer/class-ascent-customizer.php:745
+#: includes/customizer/class-ascent-customizer.php:788
+#: includes/customizer/class-ascent-customizer.php:830
+msgid "Upload image for first slider in sequence."
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:673
+msgid "Enter the Slider Video URL 1"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:687
+msgid "Slider description 1"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:700
+msgid "Slider Image 2"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:713
+msgid "Enter the Slider Video URL 2"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:727
+msgid "Slider description 2"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:742
+msgid "Slider Image 3"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:757
+msgid "Enter the Slider Video URL 3"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:771
+msgid "Slider description 3"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:785
+msgid "Slider Image 4"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:799
+msgid "Enter the Slider Video URL 4"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:813
+msgid "Slider description 4"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:827
+msgid "Slider Image 5"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:841
+msgid "Enter the Slider Video URL 5"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:855
+msgid "Slider description 5"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:865
+msgid "Footer Settings"
+msgstr ""
+
+#: includes/customizer/class-ascent-customizer.php:877
+msgid "Copyright"
+msgstr ""
+
+#: includes/extras.php:67
+msgid "Page %s"
+msgstr ""
+
+#: includes/info/info.php:24
+msgid "Howdy %1$s, we would like to thank you for installing and activating %2$s theme for your precious site. All of the features provided by the theme are now ready to use; Here, we have gathered all of the essential details and helpful links for you and your better experience with %2$s. Once again, Thanks for using our theme!"
+msgstr ""
+
+#: includes/info/info.php:28
+msgid "Getting Started"
+msgstr ""
+
+#: includes/info/info.php:29
+msgid "Support"
+msgstr ""
+
+#: includes/info/info.php:31
+#: includes/info/class.info.php:130
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: includes/info/info.php:37
+msgid "Theme Details"
+msgstr ""
+
+#: includes/info/info.php:41
+#: includes/info/info.php:94
+msgid "View Demo"
+msgstr ""
+
+#: includes/info/info.php:46
+msgid "Rate This Theme"
+msgstr ""
+
+#: includes/info/info.php:50
+msgid "Ascent Pro"
+msgstr ""
+
+#: includes/info/info.php:59
+#: includes/info/info.php:62
+msgid "Static Front Page"
+msgstr ""
+
+#: includes/info/info.php:61
+msgid "To achieve custom home page other than blog listing, you need to create and set static front page."
+msgstr ""
+
+#: includes/info/info.php:67
+msgid "Theme Options"
+msgstr ""
+
+#: includes/info/info.php:69
+msgid "Theme uses Customizer API for theme options. Using the Customizer you can easily customize different aspects of the theme."
+msgstr ""
+
+#: includes/info/info.php:70
+msgid "Customize"
+msgstr ""
+
+#: includes/info/info.php:75
+#: includes/info/info.php:78
+msgid "Widgets"
+msgstr ""
+
+#: includes/info/info.php:77
+msgid "Theme uses Wedgets API for widget options. Using the Widgets you can easily customize different aspects of the theme."
+msgstr ""
+
+#: includes/info/info.php:91
+msgid "Theme Preview"
+msgstr ""
+
+#: includes/info/info.php:93
+msgid "You can check out the theme demos for reference to find out what you can achieve using the theme and how it can be customized."
+msgstr ""
+
+#: includes/info/info.php:104
+#: includes/info/info.php:107
+msgid "Contact Support"
+msgstr ""
+
+#: includes/info/info.php:106
+msgid "Got theme support question or found bug or got some feedbacks? Best place to ask your query is the dedicated Support forum for the theme."
+msgstr ""
+
+#: includes/info/info.php:114
+msgid "Child Theme"
+msgstr ""
+
+#: includes/info/info.php:116
+msgid "For advanced theme customization, it is recommended to use child theme rather than modifying the theme file itself. Using this approach, you wont lose the customization after theme update."
+msgstr ""
+
+#: includes/info/info.php:117
+msgid "Learn More"
+msgstr ""
+
+#: includes/info/info.php:127
+msgid "To import demo content for this theme, %1$s plugin is needed. Please make sure plugin is installed and activated. After plugin is activated, you will see Import Demo Data menu under Appearance."
+msgstr ""
+
+#: includes/info/info.php:127
+msgid "One Click Demo Import"
+msgstr ""
+
+#: includes/info/info.php:132
+msgid "If you want more advanced features then you can upgrade to the premium version of the theme."
+msgstr ""
+
+#: includes/info/info.php:133
+msgid "Upgrade Now"
+msgstr ""
+
+#: includes/info/class.info.php:125
+#: includes/info/class.info.php:126
+msgid "%s info"
+msgstr ""
+
+#: includes/info/class.info.php:130
+msgid "Welcome! Thank you for choosing %1$s. To fully take advantage of the best our theme can offer please make sure you visit theme details page."
+msgstr ""
+
+#: includes/info/class.info.php:130
+msgid "Get started with %1$s"
+msgstr ""
+
+#: includes/info/class.info.php:130
+msgid "Dismiss Notice"
+msgstr ""
+
+#: includes/info/class.info.php:236
+msgid "%s() method does not exist."
+msgstr ""
+
+#: includes/info/class.info.php:345
+#: includes/info/class.info.php:386
+msgid "Manage Plugins"
+msgstr ""
+
+#: includes/info/class.info.php:414
+msgid "Product Features"
+msgstr ""
+
+#: includes/info/class.info.php:415
+msgid "Free"
+msgstr ""
+
+#: includes/info/class.info.php:416
+msgid "Premium"
+msgstr ""
+
+#: includes/template-tags.php:50
+msgid "Post navigation"
+msgstr ""
+
+#: includes/template-tags.php:55
+msgctxt "Previous post link"
+msgid "&larr;"
+msgstr ""
+
+#: includes/template-tags.php:56
+msgctxt "Next post link"
+msgid "&rarr;"
+msgstr ""
+
+#: includes/template-tags.php:61
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#: includes/template-tags.php:65
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: includes/template-tags.php:85
+msgid "Pingback:"
+msgstr ""
+
+#: includes/template-tags.php:85
+#: template-parts/content-page.php:40
+#: image.php:45
+#: image.php:100
+msgid "Edit"
+msgstr ""
+
+#: includes/template-tags.php:99
+msgid "%s "
+msgstr ""
+
+#: includes/template-tags.php:103
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: includes/template-tags.php:106
+msgid "<span style=\"margin-left: 5px;\" class=\"glyphicon glyphicon-edit\"></span> Edit"
+msgstr ""
+
+#: includes/template-tags.php:111
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: includes/template-tags.php:207
+msgid "<span class=\"posted-on\">%1$s</span> <br><span class=\"byline\">%2$s</span>"
+msgstr ""
+
+#: includes/template-tags.php:211
+msgid "View all posts by %s"
+msgstr ""
+
+#: search.php:17
+msgid "Search Results for: %s"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Left Sidebar Page"
+msgstr ""
+
+#: template-parts/content-single.php:42
+#: template-parts/content.php:47
+msgid "Posted by"
+msgstr ""
+
+#: template-parts/content-single.php:78
+#: template-parts/content-page.php:31
+#: template-parts/content.php:94
+#: image.php:81
+msgid "Pages:"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: template-parts/content-single.php:92
+#: template-parts/content-single.php:96
+#: template-parts/content.php:110
+#: template-parts/content.php:114
+msgid ", "
+msgstr ""
+
+#: template-parts/content-single.php:103
+#: template-parts/content.php:120
+msgid "<i class=\"fas fa-folder\"></i> %1$s"
+msgstr ""
+
+#: template-parts/content-single.php:106
+#: template-parts/content.php:123
+msgid "<i class=\"fas fa-tags\"></i> %1$s"
+msgstr ""
+
+#: template-parts/header-searchform.php:13
+#: searchform.php:11
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr ""
+
+#: template-parts/header-searchform.php:13
+#: searchform.php:11
+msgctxt "label"
+msgid "Search for:"
+msgstr ""
+
+#: template-parts/content.php:65
+#: template-parts/content.php:98
+msgid "Read More &rarr;"
+msgstr ""
+
+#: template-parts/header-banner.php:54
+msgid "Please provide valid video URL."
+msgstr ""
+
+#: template-parts/header/header-socialmedia.php:9
+msgid "Hey, Please visit our website to get more info."
+msgstr ""
+
+#: footer.php:57
+msgid "A Semantic Personal Publishing Platform"
+msgstr ""
+
+#: footer.php:57
+msgid "&copy; %u Ascent. All rights reserved"
+msgstr ""
+
+#: footer.php:59
+msgid "%1$s  "
+msgstr ""
+
+#: footer.php:59
+msgid "https://zetamatic.com/"
+msgstr ""
+
+#: footer.php:59
+msgid "ZetaMatic"
+msgstr ""
+
+#: sidebar.php:26
+#: sidebar-footer.php:24
+msgid "Archives"
+msgstr ""
+
+#: sidebar.php:33
+#: sidebar-footer.php:31
+msgid "Meta"
+msgstr ""
+
+#: image.php:34
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\">%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%8$s</a>"
+msgstr ""
+
+#: image.php:51
+msgid "<span class=\"meta-nav\">&larr;</span> Previous"
+msgstr ""
+
+#: image.php:54
+msgid "Next <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: image.php:91
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: image.php:93
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: image.php:95
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
+msgstr ""
+
+#: image.php:97
+msgid "Both comments and trackbacks are currently closed."
+msgstr ""
+
+#: searchform.php:13
+msgctxt "submit button"
+msgid "Search"
+msgstr ""
