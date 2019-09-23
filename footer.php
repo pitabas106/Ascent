@@ -46,7 +46,7 @@
 
                         <?php
                         $asc_copyright = str_replace( '[current_year]', date("Y"), $asc_copyright );
-                        $asc_copyright = str_replace( '[site_title]', __( 'All rights reserved' ), $asc_copyright );
+                        $asc_copyright = str_replace( '[site_title]', __( 'All rights reserved', 'ascent' ), $asc_copyright );
 
                         $asc_copyright = str_replace( '[theme_author]', '<a href="'.esc_url( "https://zetamatic.com/" ).'">ZetaMatic</a>', $asc_copyright );
 

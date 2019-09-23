@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-09-17T01:21:24+00:00\n"
+"POT-Creation-Date: 2019-09-19T02:23:59+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.2.0\n"
 "X-Domain: ascent\n"
@@ -694,6 +694,10 @@ msgstr ""
 
 #: template-parts/header/header-socialmedia.php:9
 msgid "Hey, Please visit our website to get more info."
+msgstr ""
+
+#: footer.php:49
+msgid "All rights reserved"
 msgstr ""
 
 #: footer.php:57

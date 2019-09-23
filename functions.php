@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'ASCENT_THEME_VERSION', '3.8.0' );
+define( 'ASCENT_THEME_VERSION', '3.8.1' );
 define( 'ASCENT_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'ASCENT_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
 define( 'ASCENT_PRO_URL', 'https://zetamatic.com/downloads/ascent-pro/' );

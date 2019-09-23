@@ -9,7 +9,6 @@
 
 /* Import the font-awesome css */
 
-/*@import url(../font-awesome/css/font-awesome.css );*/
 @import url(../fontawesome-5.10.2/css/all.min.css);
 
 /* This is a small security for too long strings titles */
