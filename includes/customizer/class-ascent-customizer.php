@@ -651,7 +651,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_image_1]', array(
 				'capability' => 'edit_theme_options',
 				'default' => '',
-				'sanitize_callback' => 'ascent_sanitize_file',
+				'sanitize_callback' => 'ascent_sanitize_image',
 			) );
 			$wp_customize->add_control( new WP_Customize_Image_Control(
 			$wp_customize,
@@ -692,7 +692,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_image_2]', array(
 			  'capability' => 'edit_theme_options',
-			  'sanitize_callback' => 'ascent_sanitize_file',
+			  'sanitize_callback' => 'ascent_sanitize_image',
 			) );
 			$wp_customize->add_control( new WP_Customize_Image_Control(
 			$wp_customize,
@@ -734,7 +734,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_image_3]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'ascent_sanitize_file',
+			  'sanitize_callback' => 'ascent_sanitize_image',
 			) );
 			$wp_customize->add_control( new WP_Customize_Image_Control(
 				$wp_customize,
@@ -777,7 +777,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_image_4]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'ascent_sanitize_file',
+			  'sanitize_callback' => 'ascent_sanitize_image',
 			) );
 			$wp_customize->add_control( new WP_Customize_Image_Control(
 			$wp_customize,
@@ -819,7 +819,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_image_5]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'ascent_sanitize_file',
+			  'sanitize_callback' => 'ascent_sanitize_image',
 			) );
 			$wp_customize->add_control( new WP_Customize_Image_Control(
 			$wp_customize,
