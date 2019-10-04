@@ -301,7 +301,7 @@ function ascent_scripts() {
 
 }
 
-add_action( 'wp_enqueue_scripts', 'ascent_scripts' );
+// add_action( 'wp_enqueue_scripts', 'ascent_scripts' );
 
 
 /**
@@ -323,6 +323,11 @@ function ascent_get_options( $id, $default = false ) {
     }
 }
 
+
+/**
+ * Enqueue scrits.
+ */
+require ASCENT_THEME_DIR . 'includes/core/class-ascent-enqueue-scripts.php';
 
 /**
  * Custom template tags for this theme.
@@ -353,7 +358,7 @@ if ( is_admin() ) {
 /**
  * Dynamic CSS.
  */
-require_once ASCENT_THEME_DIR . 'includes/css/theme-color-scheme/dynamic-css.php';
+require_once ASCENT_THEME_DIR . 'assets/css/theme-color-scheme/dynamic-css.php';
 
 
 /**
@@ -481,7 +486,7 @@ if( !function_exists( 'ascent_options_stylesheets_alt_style' ) ) {
         $theme_color_scheme = ascent_get_options( 'asc_theme_color_scheme' );
         if ( $theme_color_scheme && $theme_color_scheme !== 'default' ) {
             $select_color_scheme = ascent_get_options( 'asc_theme_color_scheme' );
-            $color_scheme_css_path = ASCENT_THEME_URI . 'includes/css/theme-color-scheme/'.$select_color_scheme.'.css';
+            $color_scheme_css_path = ASCENT_THEME_URI . 'assets/css/theme-color-scheme/'.$select_color_scheme.'.css';
             wp_enqueue_style( $select_color_scheme, $color_scheme_css_path, array(), null );
         }
     }

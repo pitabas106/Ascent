@@ -29,16 +29,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 		 */
 		private static $instance;
 
-		/**
-		 * Customizer Configurations.
-		 *
-		 * @access Private
-		 * @since 1.4.3
-		 * @var Array
-		 */
-		private static $configuration;
-
-
+		
 		/**
 		 * Class Initiation
 		 */
@@ -155,7 +146,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 		public function register_customizer_settings( $wp_customize ) {
 
 			
-			$imagepath =  ASCENT_THEME_URI . 'includes/images/theme-options/';
+			$imagepath =  ASCENT_THEME_URI . 'includes/customizer/assets/images/';
 
 
 		    $wp_customize->register_section_type( 'Ascent_Pro_Customizer' );

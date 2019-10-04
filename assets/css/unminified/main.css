@@ -9,7 +9,7 @@
 
 /* Import the font-awesome css */
 
-@import url(../fontawesome-5.10.2/css/all.min.css);
+@import url(../../fontawesome-5.10.2/css/all.min.css);
 
 /* This is a small security for too long strings titles */
 
@@ -620,12 +620,12 @@ body.page .page-header h1.entry-title {
 }
 #home-slider .main-owl-carousel .owl-prev {
     left: 0px;
-    background: transparent url(../images/prev.png) no-repeat center center !important;
+    background: transparent url(../../images/prev.png) no-repeat center center !important;
 }
 
 #home-slider .main-owl-carousel .owl-next {
     right: 0px;
-    background: transparent url(../images/next.png) no-repeat center center !important;
+    background: transparent url(../../images/next.png) no-repeat center center !important;
 }
 
 #home-slider .main-owl-carousel .owl-prev,
@@ -729,7 +729,7 @@ body.page .page-header h1.entry-title {
     top: 0;
     position: absolute;
     z-index: 5;
-    background: url('../images/dotted.png');
+    background: url('../../images/dotted.png');
     width: 100%;
     height: 100%;
 }
@@ -942,7 +942,7 @@ a#scroll-top {
     width: 42px;
     z-index: 9999;
     line-height: 3em;
-    background: #1ABC9C url("../images/scroll-top.png") center center no-repeat;
+    background: #1ABC9C url("../../images/scroll-top.png") center center no-repeat;
     -webkit-transition: all 0.25s ease-in-out;
     -moz-transition: all 0.25s ease-in-out;
     -o-transition: all 0.25s ease-in-out;
@@ -1024,7 +1024,7 @@ article.post .entry-content {
 .post-meta-info .entry-meta .comments_count a {
     display: inline-block;
     padding: 0 0 0 25px;
-    background: url("../images/comment-count-icon.png") 0 3px no-repeat;
+    background: url("../../images/comment-count-icon.png") 0 3px no-repeat;
     font-weight: 700;
     color: #FFF;
 }
