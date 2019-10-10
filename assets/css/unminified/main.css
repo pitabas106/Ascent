@@ -2,11 +2,6 @@
  * Theme main style
  */
 
-
-/* Import the necessary Bootstrap WP CSS additions */
-
-@import url(bootstrap-wp.css );
-
 /* Import the font-awesome css */
 
 @import url(../../fontawesome-5.10.2/css/all.min.css);

@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Define Constants
  */
-define( 'ASCENT_THEME_VERSION', '3.8.1' );
+define( 'ASCENT_THEME_VERSION', '3.8.5' );
 define( 'ASCENT_THEME_DIR', trailingslashit( get_template_directory() ) );
 define( 'ASCENT_THEME_URI', trailingslashit( esc_url( get_template_directory_uri() ) ) );
 define( 'ASCENT_PRO_URL', 'https://zetamatic.com/downloads/ascent-pro/' );
@@ -225,83 +225,6 @@ function ascent_widgets_init() {
     ) );
 }
 add_action( 'widgets_init', 'ascent_widgets_init' );
-
-
-/**
- * Enqueue scripts and styles
- *
- */
-function ascent_scripts() {
-    $enable_swipebox        = ascent_get_options( 'asc_enable_swipebox' );
-    $enable_sticky_header   = ascent_get_options( 'asc_enable_sticky_header' );
-    $body_font_family       = ascent_get_options( 'asc_body_font_family' );
-    $protocol               = is_ssl() ? 'https' : 'http';
-    $min                    = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-
-    if( $body_font_family ) {
-        $fonts_array = explode( '|||', $body_font_family );
-        wp_enqueue_style('ascent-google-font', $fonts_array[1]);
-    } else {
-        wp_enqueue_style('google-opensans', "$protocol://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
-    }
-
-    // load bootstrap css
-    wp_enqueue_style( 'bootstrap', ASCENT_THEME_URI . 'includes/resources/bootstrap/css/bootstrap'. $min .'.css' );
-
-    if( $enable_swipebox ) { //check if enable swipebox from theme options
-        wp_enqueue_style( 'swipebox', ASCENT_THEME_URI . 'includes/css/swipebox'. $min .'.css' );
-    }
-    wp_enqueue_style( 'owl-carousel', ASCENT_THEME_URI . 'includes/css/owl.carousel'. $min .'.css' );
-    wp_enqueue_style( 'owl-theme', ASCENT_THEME_URI . 'includes/css/owl.theme.default'. $min .'.css' );
-    wp_enqueue_style( 'ascent-animations', ASCENT_THEME_URI . 'includes/css/animations'. $min .'.css' );
-    wp_enqueue_style( 'meanmenu', ASCENT_THEME_URI . 'includes/css/meanmenu'. $min .'.css' );
-    wp_enqueue_style( 'ascent-main', ASCENT_THEME_URI . 'includes/css/main'. $min .'.css' );
-
-    // load ascent styles
-    wp_enqueue_style( 'ascent-style', get_stylesheet_uri() );
-
-    // load bootstrap js
-    wp_enqueue_script( 'bootstrap', ASCENT_THEME_URI.'includes/resources/bootstrap/js/bootstrap'. $min .'.js', array( 'jquery' ) );
-
-    // load bootstrap wp js
-    wp_enqueue_script( 'ascent-bootstrapwp', ASCENT_THEME_URI . 'includes/js/bootstrap-wp'. $min .'.js', array( 'jquery' ) );
-
-    wp_enqueue_script( 'ascent-skip-link-focus-fix', ASCENT_THEME_URI . 'includes/js/skip-link-focus-fix'. $min .'.js', array(), ASCENT_THEME_VERSION, true );
-
-    // Load the html5 shiv.
-    wp_enqueue_script( 'html5', ASCENT_THEME_URI . 'includes/js/html5'. $min .'.js', array(), ASCENT_THEME_VERSION, true );
-    wp_script_add_data( 'html5', 'conditional', 'lt IE 9' );
-
-
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-    wp_enqueue_script( 'comment-reply' );
-    }
-
-    if ( is_singular() && wp_attachment_is_image() ) {
-    wp_enqueue_script( 'ascent-keyboard-image-navigation', ASCENT_THEME_URI . 'includes/js/keyboard-image-navigation'. $min .'.js', array( 'jquery' ), ASCENT_THEME_VERSION );
-    }
-
-    if( $enable_swipebox ) { //check if enable swipebox from theme options
-    wp_enqueue_script( 'swipebox', ASCENT_THEME_URI . 'includes/js/jquery.swipebox.min.js', array( 'jquery' ) );
-    wp_enqueue_script( 'ascent-swipebox-config', ASCENT_THEME_URI . 'includes/js/swipebox-config'. $min .'.js', array('jquery') );
-    }
-
-    wp_enqueue_script( 'owl-carousel', ASCENT_THEME_URI . 'includes/js/owl.carousel'. $min .'.js', array( 'jquery' ) );
-    wp_enqueue_script( 'appear', ASCENT_THEME_URI . 'includes/js/jquery.appear'. $min .'.js', array( 'jquery' ) );
-    wp_enqueue_script( 'meanmenu', ASCENT_THEME_URI . 'includes/js/jquery.meanmenu'. $min .'.js', array( 'jquery' ) );
-    wp_enqueue_script( 'velocity', ASCENT_THEME_URI . 'includes/js/jquery.velocity'. $min .'.js', array( 'jquery' ) );
-    wp_enqueue_script( 'ascent-appear-config', ASCENT_THEME_URI . 'includes/js/appear.config'. $min .'.js', array( 'jquery' ) );
-
-    // Theme main js
-    wp_enqueue_script( 'ascent-themejs', ASCENT_THEME_URI . 'includes/js/main'. $min .'.js', array( 'jquery' ) );
-
-    if( $enable_sticky_header ) {
-    wp_enqueue_script( 'ascent-enable-sticky-header', ASCENT_THEME_URI . '/includes/js/enable-sticky-header'. $min .'.js', array( 'jquery' ) );
-    }
-
-}
-
-// add_action( 'wp_enqueue_scripts', 'ascent_scripts' );
 
 
 /**

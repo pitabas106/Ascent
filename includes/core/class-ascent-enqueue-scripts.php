@@ -6,7 +6,7 @@
  * @author      Pitabas106
  * @copyright   Copyright (c) 2019, Ascent
  * @link        https://ascenttheme.com/
- * @since       Ascent 3.8.4
+ * @since       Ascent 3.8.5
  */
 
 
@@ -60,6 +60,7 @@ if ( ! class_exists( 'Ascent_Enqueue_Scripts' ) ) {
 
 			$file_prefix  			= ( SCRIPT_DEBUG ) ? '' : '.min';
 			$dir_name    			= ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
+			echo $dir_name;
 
 			$js_uri  				= ASCENT_THEME_URI . 'assets/js/' . $dir_name . '/';
 			$css_uri 				= ASCENT_THEME_URI . 'assets/css/' . $dir_name . '/';
@@ -87,10 +88,12 @@ if ( ! class_exists( 'Ascent_Enqueue_Scripts' ) ) {
 		    wp_enqueue_style( 'owl-theme', $css_uri . 'owl.theme.default'. $file_prefix .'.css' );
 		    wp_enqueue_style( 'ascent-animations', $css_uri . 'animations'. $file_prefix .'.css' );
 		    wp_enqueue_style( 'meanmenu', $css_uri . 'meanmenu'. $file_prefix .'.css' );
-		    wp_enqueue_style( 'ascent-main', $css_uri . 'main'. $file_prefix .'.css' );
+		    wp_enqueue_style( 'bootstrap-wp', $css_uri . 'bootstrap-wp'. $file_prefix .'.css' );
+			wp_enqueue_style( 'ascent-main', $css_uri . 'main'. $file_prefix .'.css' );
 
 		    // load ascent styles
 		    wp_enqueue_style( 'ascent-style', get_stylesheet_uri() );
+
 
 		    // load bootstrap js
 		    wp_enqueue_script( 'bootstrap', ASCENT_THEME_URI .'assets/resources/bootstrap/js/bootstrap'. $file_prefix .'.js', array( 'jquery' ) );
