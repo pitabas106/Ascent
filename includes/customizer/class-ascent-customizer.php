@@ -670,7 +670,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_description_1]', array(
 				'capability' => 'edit_theme_options',
 				'default' => '',
-				'sanitize_callback' => 'sanitize_text_field'
+				'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 		      'ascent_theme_options[asc_slider_description_1]',
@@ -710,7 +710,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_description_2]', array(
 			  	'capability' => 'edit_theme_options',
 				'default' => '',
-			  	'sanitize_callback' => 'sanitize_text_field'
+			  	'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 			    'ascent_theme_options[asc_slider_description_2]',
@@ -754,7 +754,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_description_3]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'sanitize_text_field'
+			  'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 			    'ascent_theme_options[asc_slider_description_3]',
@@ -796,7 +796,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_description_4]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'sanitize_text_field'
+			  'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 			    'ascent_theme_options[asc_slider_description_4]',
@@ -838,7 +838,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_slider_description_5]', array(
 			  'capability' => 'edit_theme_options',
 				'default' => '',
-			  'sanitize_callback' => 'sanitize_text_field'
+			  'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 			    'ascent_theme_options[asc_slider_description_5]',
@@ -860,7 +860,7 @@ if ( ! class_exists( 'Ascent_Customizer' ) ) {
 			$wp_customize->add_setting( 'ascent_theme_options[asc_copyright]', array(
 				'capability' => 'edit_theme_options',
 				'default' => '',
-				'sanitize_callback' => 'sanitize_text_field'
+				'sanitize_callback' => 'wp_kses_post'
 			) );
 			$wp_customize->add_control(
 		      'ascent_theme_options[asc_copyright]',
