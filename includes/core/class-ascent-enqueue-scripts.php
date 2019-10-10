@@ -60,7 +60,6 @@ if ( ! class_exists( 'Ascent_Enqueue_Scripts' ) ) {
 
 			$file_prefix  			= ( SCRIPT_DEBUG ) ? '' : '.min';
 			$dir_name    			= ( SCRIPT_DEBUG ) ? 'unminified' : 'minified';
-			echo $dir_name;
 
 			$js_uri  				= ASCENT_THEME_URI . 'assets/js/' . $dir_name . '/';
 			$css_uri 				= ASCENT_THEME_URI . 'assets/css/' . $dir_name . '/';
